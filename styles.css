@@ -8,6 +8,8 @@
   --snake-head: #15391b;
   --food: #bb3e2b;
   --cell: #ebe5d6;
+  --surface: #f7f1e1;
+  --surface-strong: #efe3bf;
 }
 
 * {
@@ -22,8 +24,24 @@ body {
   color: var(--border);
 }
 
-button {
+button,
+input {
   font: inherit;
+}
+
+button {
+  border: 2px solid var(--border);
+  background: #f6ecd1;
+  color: var(--border);
+  cursor: pointer;
+}
+
+input {
+  width: 100%;
+  border: 2px solid var(--border);
+  background: #fffdfa;
+  color: var(--border);
+  padding: 10px 12px;
 }
 
 .app {
@@ -34,7 +52,7 @@ button {
 }
 
 .panel {
-  width: min(100%, 540px);
+  width: min(100%, 620px);
   background: var(--panel);
   border: 2px solid var(--border);
   padding: 20px;
@@ -43,15 +61,25 @@ button {
 
 .heading,
 .actions,
-.controls-row {
+.controls-row,
+.leaderboard-item {
   display: flex;
   align-items: center;
 }
 
 .heading,
-.actions {
+.actions,
+.leaderboard-item {
   justify-content: space-between;
   gap: 16px;
+}
+
+.stack {
+  margin-top: 18px;
+}
+
+.hidden {
+  display: none;
 }
 
 .eyebrow {
@@ -62,9 +90,35 @@ button {
   color: var(--muted);
 }
 
-h1 {
+h1,
+h2,
+p {
   margin: 0;
+}
+
+h1 {
   font-size: clamp(2rem, 6vw, 2.75rem);
+}
+
+h2 {
+  font-size: 1.1rem;
+}
+
+.intro,
+.leaderboard-note,
+.status,
+.scoreboard span,
+.meta-card span,
+.field span,
+.leaderboard-rank {
+  color: var(--muted);
+}
+
+.scoreboard,
+.meta-card,
+.leaderboard-item,
+.field input {
+  background: var(--surface);
 }
 
 .scoreboard {
@@ -72,39 +126,50 @@ h1 {
   padding: 10px 14px;
   border: 2px solid var(--border);
   text-align: center;
-  background: #f7f1e1;
 }
 
-.scoreboard span,
-.status {
-  color: var(--muted);
+.scoreboard strong,
+.meta-card strong {
+  display: block;
+  color: var(--border);
 }
 
 .scoreboard strong {
-  display: block;
   font-size: 1.5rem;
-  color: var(--border);
 }
 
-.actions {
-  margin-top: 18px;
+.player-form {
+  display: grid;
+  gap: 12px;
 }
 
-.actions button,
-.controls button {
-  border: 2px solid var(--border);
-  background: #f6ecd1;
-  color: var(--border);
-  cursor: pointer;
+.field {
+  display: grid;
+  gap: 6px;
 }
 
+.player-form button,
 .actions button {
-  padding: 8px 14px;
+  padding: 10px 14px;
+}
+
+.meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.meta-card {
+  border: 2px solid var(--border);
+  padding: 10px 12px;
+}
+
+.meta-card strong {
+  font-size: 1.2rem;
 }
 
 .status {
   min-height: 24px;
-  margin: 14px 0;
 }
 
 .board {
@@ -138,7 +203,6 @@ h1 {
   display: grid;
   justify-content: center;
   gap: 8px;
-  margin-top: 18px;
 }
 
 .controls button {
@@ -152,24 +216,76 @@ h1 {
   justify-content: center;
 }
 
+.leaderboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.leaderboard-item {
+  border: 2px solid var(--border);
+  padding: 10px 12px;
+}
+
+.leaderboard-item.current-player {
+  background: var(--surface-strong);
+}
+
+.leaderboard-name {
+  font-weight: 700;
+}
+
+.leaderboard-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.leaderboard-score {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.empty-state {
+  border: 2px dashed var(--border);
+  padding: 16px;
+  background: var(--surface);
+  color: var(--muted);
+}
+
 @media (min-width: 700px) {
   .controls {
     display: none;
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
   .panel {
     padding: 16px;
   }
 
   .heading,
-  .actions {
+  .actions,
+  .leaderboard-header {
     flex-direction: column;
     align-items: stretch;
   }
 
   .scoreboard {
     align-self: flex-start;
+  }
+
+  .meta-grid {
+    grid-template-columns: 1fr;
   }
 }

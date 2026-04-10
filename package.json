@@ -1,5 +1,6 @@
 {
   "name": "demo-snake-game",
+  "description": "Static Snake arcade game with a start screen and local leaderboard.",
   "private": true,
   "type": "module",
   "scripts": {
