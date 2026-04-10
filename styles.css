@@ -88,7 +88,7 @@ input {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .eyebrow {
@@ -178,6 +178,7 @@ h2 {
 
 .main-stage {
   display: grid;
+  min-height: 0;
 }
 
 .start-screen,
@@ -250,6 +251,7 @@ h2 {
   display: grid;
   grid-template-rows: auto auto auto minmax(0, 1fr) auto;
   gap: 12px;
+  align-content: start;
 }
 
 .status {
@@ -261,7 +263,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(16, minmax(0, 1fr));
   gap: 2px;
-  width: min(100%, min(64vh, 540px));
+  width: min(100%, min(48vh, 430px));
   margin: 0 auto;
   padding: 8px;
   background: var(--border);
