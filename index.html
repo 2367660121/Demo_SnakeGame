@@ -13,9 +13,10 @@
     <main class="app">
       <section class="panel">
         <div class="heading">
-          <div>
+          <div class="title-block">
             <p class="eyebrow">Classic Arcade</p>
             <h1>Snake Leaderboard Arcade</h1>
+            <p class="subhead">Desktop-first Snake with quick rounds and local bragging rights.</p>
           </div>
           <div class="scoreboard" aria-live="polite">
             <span>Score</span>
@@ -23,77 +24,97 @@
           </div>
         </div>
 
-        <section id="start-screen" class="stack">
-          <p class="intro">
-            Enter a player name, start a run, and try to climb the local
-            leaderboard.
-          </p>
+        <div class="content-grid">
+          <section class="main-stage">
+            <section id="start-screen" class="start-screen stack">
+              <p class="intro">
+                Enter a player name, start a run, and try to climb the local
+                leaderboard.
+              </p>
 
-          <form id="start-form" class="player-form">
-            <label class="field">
-              <span>Player name</span>
-              <input
-                id="player-name-input"
-                name="playerName"
-                type="text"
-                maxlength="16"
-                placeholder="Player 1"
-                autocomplete="nickname"
-                required
-              />
-            </label>
-            <button id="start-button" type="submit">Start Game</button>
-          </form>
-        </section>
+              <form id="start-form" class="player-form">
+                <label class="field">
+                  <span>Player name</span>
+                  <input
+                    id="player-name-input"
+                    name="playerName"
+                    type="text"
+                    maxlength="16"
+                    placeholder="Player 1"
+                    autocomplete="nickname"
+                    required
+                  />
+                </label>
+                <button id="start-button" type="submit">Start Game</button>
+              </form>
 
-        <section id="game-shell" class="stack hidden">
-          <div class="meta-grid">
-            <div class="meta-card">
-              <span>Player</span>
-              <strong id="player-name">Guest</strong>
-            </div>
-            <div class="meta-card">
-              <span>Best</span>
-              <strong id="player-best">0</strong>
-            </div>
-            <div class="meta-card">
-              <span>Rank</span>
-              <strong id="player-rank">-</strong>
-            </div>
-          </div>
+              <div class="start-tips">
+                <span>16x16 board</span>
+                <span>WASD / Arrow Keys</span>
+                <span>Best score per player</span>
+              </div>
+            </section>
 
-          <div class="actions">
-            <button id="pause-button" type="button">Pause</button>
-            <button id="restart-button" type="button">Restart</button>
-            <button id="change-player-button" type="button">Change Player</button>
-          </div>
+            <section id="game-shell" class="game-shell stack hidden">
+              <div class="meta-grid">
+                <div class="meta-card">
+                  <span>Player</span>
+                  <strong id="player-name">Guest</strong>
+                </div>
+                <div class="meta-card">
+                  <span>Best</span>
+                  <strong id="player-best">0</strong>
+                </div>
+                <div class="meta-card">
+                  <span>Rank</span>
+                  <strong id="player-rank">-</strong>
+                </div>
+              </div>
 
-          <p id="status" class="status">Use arrow keys or WASD to steer.</p>
+              <div class="actions">
+                <button id="pause-button" type="button">Pause</button>
+                <button id="restart-button" type="button">Restart</button>
+                <button id="change-player-button" type="button">Change Player</button>
+              </div>
 
-          <div
-            id="board"
-            class="board"
-            role="grid"
-            aria-label="Snake game board"
-          ></div>
+              <p id="status" class="status">Use arrow keys or WASD to steer.</p>
 
-          <div class="controls" aria-label="Touch controls">
-            <button type="button" data-direction="up" aria-label="Move up">↑</button>
-            <div class="controls-row">
-              <button type="button" data-direction="left" aria-label="Move left">←</button>
-              <button type="button" data-direction="down" aria-label="Move down">↓</button>
-              <button type="button" data-direction="right" aria-label="Move right">→</button>
-            </div>
-          </div>
-        </section>
+              <div
+                id="board"
+                class="board"
+                role="grid"
+                aria-label="Snake game board"
+              ></div>
 
-        <section class="stack">
-          <div class="leaderboard-header">
-            <h2>Leaderboard</h2>
-            <p class="leaderboard-note">Top local scores stored in this browser.</p>
-          </div>
-          <ol id="leaderboard" class="leaderboard-list"></ol>
-        </section>
+              <div class="controls" aria-label="Touch controls">
+                <button type="button" data-direction="up" aria-label="Move up">↑</button>
+                <div class="controls-row">
+                  <button type="button" data-direction="left" aria-label="Move left">←</button>
+                  <button type="button" data-direction="down" aria-label="Move down">↓</button>
+                  <button type="button" data-direction="right" aria-label="Move right">→</button>
+                </div>
+              </div>
+            </section>
+          </section>
+
+          <aside class="sidebar">
+            <section class="sidebar-card">
+              <p class="sidebar-label">Focus</p>
+              <p class="sidebar-copy">
+                Short rounds, clean controls, one-board layout. The leaderboard on
+                the right keeps each player's best score.
+              </p>
+            </section>
+
+            <section class="sidebar-card leaderboard-panel">
+              <div class="leaderboard-header">
+                <h2>Leaderboard</h2>
+                <p class="leaderboard-note">This browser only</p>
+              </div>
+              <ol id="leaderboard" class="leaderboard-list"></ol>
+            </section>
+          </aside>
+        </div>
       </section>
     </main>
 
